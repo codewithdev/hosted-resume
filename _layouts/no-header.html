@@ -6,6 +6,7 @@
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popup.js/1.0.0/popup.min.css">
     <style>
         body {
             max-width: 800px;
@@ -17,23 +18,19 @@
             background-color: black;
             color: white;
         }
-        .popup {
-            display: none;
+        .theme-toggle {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            border: 1px solid #ccc;
-            padding: 20px;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
         }
-        .popup.active {
-            display: block;
-        }
-        .popup button {
-            margin: 5px;
+        .theme-icon {
+            width: 36px;
+            height: 36px;
+            fill: grey;
         }
     </style>
 </head>
@@ -41,18 +38,21 @@
     {{ content }}
 
     <!-- Popup for Download Resume and Contact Me -->
-    <div class="popup" id="popup">
-        <p>Would you like to download the resume or contact me?</p>
-        <button onclick="downloadResume()">Download Resume</button>
-        <button onclick="contactMe()">Contact Me</button>
+    <div id="popup" class="popup">
+        <div class="popup-header"></div>
+        <div class="popup-footer">
+            <button onclick="downloadResume()">Download Resume</button>
+            <button onclick="contactMe()">Contact Me</button>
+        </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popup.js/1.0.0/popup.min.js"></script>
     <script>
         // Function to download the resume
         function downloadResume() {
             const link = document.createElement('a');
-            link.href = 'path/to/your/resume.pdf'; // Replace with the actual resume path
-            link.download = 'Your_Resume.pdf'; // Change filename as necessary
+            link.href = 'Dev_Prakash_Sharma.pdf'; 
+            link.download = 'Dev_Prakash_Sharma.pdf'; 
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -60,13 +60,20 @@
 
         // Function to contact via email
         function contactMe() {
-            window.location.href = 'mailto:idevprakaash@gmail.com'; // Change to your email
+            window.location.href = 'mailto:idevprakaash@gmail.com'; 
         }
 
         // Function to show the popup
         function showPopup() {
-            const popup = document.getElementById('popup');
-            popup.classList.add('active');
+            popup({
+                content: `
+                    <div class="popup-header">Would you like to download the resume or contact me?</div>
+                    <button onclick="downloadResume()">Download Resume</button>
+                    <button onclick="contactMe()">Contact Me</button>
+                `,
+                closeButton: false,
+                showCloseButton: false
+            });
         }
 
         // Function to toggle the theme
@@ -82,14 +89,14 @@
                 moonIcon.style.display = 'none';
                 sunIcon.style.display = 'block';
             }
+            localStorage.setItem('darkMode', element.classList.contains('dark-mode'));
         }
 
-        // Show popup after 1.5 minutes only if it hasn't been shown before
         const popupShownKey = 'popupShown';
         const popupShown = localStorage.getItem(popupShownKey);
 
         if (!popupShown) {
-            setTimeout(showPopup, 50000); // 1.5 minutes
+            setTimeout(showPopup, 50000); // ~ 60seconds
             localStorage.setItem(popupShownKey, 'true');
         }
 
@@ -103,11 +110,11 @@
         });
     </script>
 
-    <button onclick="toggleTheme()">
-        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="grey" viewBox="0 0 16 16">
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <svg id="sun-icon" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
             <path d="M8 0a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1zm0 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.364-4.364a1 1 0 0 1 0 1.414l-1.414 1.414a1 1 0 0 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 0zm-12.728 0a1 1 0 0 1 0 1.414L1.414 9.07a1 1 0 1 1-1.414-1.414L1.636 7.636a1 1 0 0 1 1.414 0zM8 0a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0V1a1 1 0 0 1 1-1zm7.728 10.728a1 1 0 0 1 1.414 1.414l-1.414 1.414a1 1 0 1 1-1.414-1.414l1.414-1.414zM4.95 2.95a1 1 0 0 1 0-1.414L6.364.636a1 1 0 1 1 1.414 1.414L6.364 2.95a1 1 0 0 1-1.414 0zm6.364 0a1 1 0 0 1 1.414 0l1.414 1.414a1 1 0 1 1-1.414 1.414L11.314 2.95a1 1 0 0 1 0-1.414z"/>
         </svg>
-        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="grey" viewBox="0 0 16 16" style="display:none;">
+        <svg id="moon-icon" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" style="display:none;">
             <path d="M6.293 14.293a1 1 0 0 1-1.415-1.414 6 6 0 1 0 8.486-8.486 1 1 0 0 1-1.415-1.415 8 8 0 1 1-5.656 5.656z"/>
         </svg>
     </button>
