@@ -1,4 +1,6 @@
-
+---
+layout: no-header
+---
 
 # DEV PRAKASH SHARMA
 
