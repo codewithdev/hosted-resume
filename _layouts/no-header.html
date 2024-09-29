@@ -73,7 +73,7 @@
 
     <!-- Dark Mode Toggle Button -->
     <div class="switch-container">
-        <label for="theme-toggle">Dark Mode</label>
+        <span id="theme-label">Dark Mode</span>
         <label class="switch">
             <input type="checkbox" id="theme-toggle">
             <span class="slider"></span>
@@ -85,19 +85,23 @@
         const savedTheme = localStorage.getItem('theme');
         const body = document.body;
         const themeToggle = document.getElementById('theme-toggle');
+        const themeLabel = document.getElementById('theme-label');
 
         if (savedTheme === 'dark') {
             body.classList.add('dark-mode');
             themeToggle.checked = true;
+            themeLabel.textContent = 'Light Mode';
         }
 
         // Toggle theme and save preference
         themeToggle.addEventListener('change', () => {
             if (themeToggle.checked) {
                 body.classList.add('dark-mode');
+                themeLabel.textContent = 'Light Mode';
                 localStorage.setItem('theme', 'dark');
             } else {
                 body.classList.remove('dark-mode');
+                themeLabel.textContent = 'Dark Mode';
                 localStorage.setItem('theme', 'light');
             }
         });
