@@ -63,7 +63,7 @@
 
         // Show popup after 1.5 minutes if not already shown
         if (!popupShown) {
-            setTimeout(showPopup, 90 * 1000); // 1.5 minutes
+            setTimeout(showPopup, 90000); // 1.5 minutes
             localStorage.setItem(popupShownKey, 'true');
         }
 
@@ -84,7 +84,7 @@
         }
 
         function downloadResume() {
-            window.open('https://your-repository-url.com/your-resume.pdf', '_blank');
+            window.open('Dev_Prakash_Sharma.pdf', '_blank');
         }
 
         function contactMe() {
