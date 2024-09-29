@@ -15,8 +15,64 @@
     </style>
 </head>
 <body class="markdown-body">
+        <!-- Theme and Action Buttons -->
+         <div style="margin-top: 20px; display: flex; align-items: center;">
+            <button id="theme-toggle" class="button theme-toggle">
+                Switch to Dark Theme
+            </button>
+            <a href="https://linkedin.com/in/idevprakaash" target="_blank" style="text-decoration: none;">
+                <button class="button linkedin">
+                    Contact Me on LinkedIn
+                </button>
+            </a>
+            <a href="resume.pdf" download="Dev_Prakash_Sharma_Resume.pdf" style="text-decoration: none;">
+                <button class="button download">
+                    Download Resume as PDF
+                </button>
+            </a>
+        </div>
     <div>
         {{ content }}
     </div>
+    <script>
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+        }
+
+        // Function to get a cookie
+        function getCookie(name) {
+            return document.cookie.split('; ').reduce((r, v) => {
+                const parts = v.split('=');
+                return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+            }, '');
+        }
+
+        const themeToggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Check cookie for theme preference
+        const theme = getCookie('theme');
+        if (theme === 'dark') {
+            body.classList.add('dark-theme');
+            themeToggleButton.textContent = 'Switch to Light Theme';
+        }
+
+        themeToggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+
+            if (body.classList.contains('dark-theme')) {
+                themeToggleButton.textContent = 'Switch to Light Theme';
+                setCookie('theme', 'dark', 30); // Set cookie for 30 days
+            } else {
+                themeToggleButton.textContent = 'Switch to Dark Theme';
+                setCookie('theme', 'light', 30); // Set cookie for 30 days
+            }
+        });
+    </script>
 </body>
 </html>
+
+
+
