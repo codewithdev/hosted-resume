@@ -1,3 +1,7 @@
+---
+layout: plain
+---
+
 # DEV PRAKASH SHARMA
 
 **Email**: idevprakaash@gmail.com  
