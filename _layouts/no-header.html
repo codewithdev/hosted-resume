@@ -13,6 +13,7 @@
             margin: auto;
             padding: 2rem;
             font-family: Libre Baskerville, Georgia, serif;
+            transition: filter 0.3s ease; /* Transition for background blur */
         }
         .dark-mode {
             background-color: black;
@@ -66,6 +67,10 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 1001;
+            display: none; /* Initially hidden */
+        }
+        .blur {
+            filter: blur(2px); /* Slight blur effect */
         }
     </style>
 </head>
@@ -78,7 +83,7 @@
             <input type="checkbox" id="theme-toggle">
             <div class="slider">
                 <img src="https://img.icons8.com/material-outlined/24/000000/sun.png" class="sun" />
-                <img src="" class="moon" style="opacity: 0;" />
+                <img src="https://img.icons8.com/material-outlined/24/000000/moon.png" class="moon" style="opacity: 0;" />
             </div>
         </label>
     </div>
@@ -98,33 +103,55 @@
         });
 
         // Popup Logic
-        const popupDelay = 90 * 1000; // 1.5 minutes in milliseconds
+        const popupDelay = 20 * 1000; // 20 seconds in milliseconds
         const popupDisplayedKey = 'popupDisplayed';
+        const popupTimeKey = 'popupTime';
+
+        function showPopup() {
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.innerHTML = `
+                <div class="popup-content">
+                    <h2>A friendly professional</h2>
+                    <p>Would you like to:</p>
+                    <button id="download-resume" class="popup-button">Download Resume</button>
+                    <button id="contact-me" class="popup-button">Contact Me</button>
+                </div>
+            `;
+            document.body.appendChild(popup);
+            popup.style.display = 'block'; // Show the popup
+            document.body.classList.add('blur'); // Apply blur to background
+
+            document.getElementById('download-resume').addEventListener('click', function() {
+                window.location.href = 'Dev_Prakash_Sharma.pdf'; 
+            });
+
+            document.getElementById('contact-me').addEventListener('click', function() {
+                window.location.href = 'mailto:idevprakaash@gmail.com';
+            });
+        }
 
         // Check if popup timing has already been set
-        if (!localStorage.getItem(popupDisplayedKey)) {
+        const lastPopupTime = localStorage.getItem(popupTimeKey);
+        if (!localStorage.getItem(popupDisplayedKey) && !lastPopupTime) {
             setTimeout(() => {
-                const popup = document.createElement('div');
-                popup.className = 'popup';
-                popup.innerHTML = `
-                    <div class="popup-content">
-                        <h2>Resume Options</h2>
-                        <p>Would you like to:</p>
-                        <button id="download-resume" class="popup-button">Download Resume</button>
-                        <button id="contact-me" class="popup-button">Contact Me</button>
-                    </div>
-                `;
-                document.body.appendChild(popup);
+                showPopup();
                 localStorage.setItem(popupDisplayedKey, true);
-
-                document.getElementById('download-resume').addEventListener('click', function() {
-                    window.location.href = 'Dev_Prakash_Sharma.pdf'; 
-                });
-
-                document.getElementById('contact-me').addEventListener('click', function() {
-                    window.location.href = 'mailto:idevprakaash@gmail.com';
-                });
+                localStorage.setItem(popupTimeKey, Date.now());
             }, popupDelay);
+        } else if (lastPopupTime) {
+            const elapsedTime = Date.now() - lastPopupTime;
+            const remainingTime = popupDelay - elapsedTime;
+
+            if (remainingTime > 0) {
+                setTimeout(() => {
+                    showPopup();
+                    localStorage.setItem(popupDisplayedKey, true);
+                }, remainingTime);
+            } else {
+                showPopup();
+                localStorage.setItem(popupDisplayedKey, true);
+            }
         }
     </script>
 </body>
