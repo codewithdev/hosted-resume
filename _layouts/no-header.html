@@ -71,12 +71,29 @@
                 setCookie('theme', 'light', 30); // Set cookie for 30 days
             }
         });
-        // Function to download content as PDF
-        document.getElementById('download-pdf').addEventListener('click', () => {
-            const element = document.getElementById('content');
+       // Function to download content as PDF
+       document.getElementById('download-pdf').addEventListener('click', () => {
+            // Use a clone of the content to keep original styles
+            const element = document.getElementById('content').cloneNode(true);
+            element.style.maxWidth = 'none';
+            element.style.margin = '0';
+
+            // Convert to PDF using html2pdf
             html2pdf()
                 .from(element)
-                .save('Dev_Prakash_Sharma_Resume.pdf');
+                .set({
+                    margin: 10,
+                    filename: 'Dev_Prakash_Sharma_Resume.pdf',
+                    html2canvas: {
+                        scale: 2, // Increase scale to improve quality
+                    },
+                    jsPDF: {
+                        unit: 'mm',
+                        format: 'a4',
+                        orientation: 'portrait'
+                    }
+                })
+                .save();
         });
     </script>
 </body>
