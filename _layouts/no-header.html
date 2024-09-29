@@ -58,43 +58,22 @@
             transition: background-color 0.3s ease;
         }
         .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            width: 100%;
-            height: 100%;
-            border: 1px solid black;
-            overflow: auto;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            display: none; /* Initially hidden */
-            backdrop-filter: blur(5px); /* Blur effect for the background */
-
-            .popup-content {
-    background-color: white;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+            text-align: center;
+        }
+        .popup button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+        
     </style>
 </head>
 <body class="markdown-body">
@@ -125,56 +104,37 @@
             localStorage.setItem('theme', newTheme);
         });
 
-        // Popup Logic
-        const popupDelay = 20 * 1000; // 20 seconds in milliseconds
-        const popupDisplayedKey = 'popupDisplayed';
-        const popupTimeKey = 'popupTime';
+        // Popup
+        const popupShownKey = 'popupShown';
+        const popupShown = localStorage.getItem(popupShownKey);
 
-        function showPopup() {
-            const popup = document.createElement('div');
-            popup.className = 'popup';
-            popup.innerHTML = `
-                <div class="popup-content">
-                    <h2>A Friendly Professional🤵‍♂️</h2>
-                    <p>If you are interested, you can:</p>
-                    <button id="download-resume" class="popup-button">Download Resume</button>
-                    <button id="contact-me" class="popup-button">Send Email</button>
-                </div>
-            `;
-            document.body.appendChild(popup);
-            popup.style.display = 'block'; 
-            document.body.classList.add('blur'); 
-
-            document.getElementById('download-resume').addEventListener('click', function() {
-                window.location.href = 'Dev_Prakash_Sharma.pdf'; 
-            });
-
-            document.getElementById('contact-me').addEventListener('click', function() {
-                window.location.href = 'mailto:idevprakaash@gmail.com';
-            });
+        // Show popup after 1.5 minutes if not already shown
+        if (!popupShown) {
+            setTimeout(showPopup, 90 * 1000); // 1.5 minutes
+            localStorage.setItem(popupShownKey, 'true');
         }
 
-        // Check if popup timing has already been set
-        const lastPopupTime = localStorage.getItem(popupTimeKey);
-        if (!localStorage.getItem(popupDisplayedKey) && !lastPopupTime) {
-            setTimeout(() => {
-                showPopup();
-                localStorage.setItem(popupDisplayedKey, true);
-                localStorage.setItem(popupTimeKey, Date.now());
-            }, popupDelay);
-        } else if (lastPopupTime) {
-            const elapsedTime = Date.now() - lastPopupTime;
-            const remainingTime = popupDelay - elapsedTime;
+        function showPopup() {
+            const popup = new Popup({
+                title: 'Options',
+                content: `
+                    <div class="popup">
+                        <p>What would you like to do?</p>
+                        <button onclick="downloadResume()">Download Resume</button>
+                        <button onclick="contactMe()">Contact Me</button>
+                    </div>
+                `,
+                buttons: [],
+                closeOnClick: false
+            });
+            popup.show();
+        }
+        function downloadResume() {
+            window.open('https://github.com/codewithdev/hosted-resume/blob/master/Dev_Prakash_Sharma.pdf', '_blank');
+        }
 
-            if (remainingTime > 0) {
-                setTimeout(() => {
-                    showPopup();
-                    localStorage.setItem(popupDisplayedKey, true);
-                }, remainingTime);
-            } else {
-                showPopup();
-                localStorage.setItem(popupDisplayedKey, true);
-            }
+        function contactMe() {
+            window.open('mailto:idevprakaash@example.com');
         }
     </script>
 </body>
