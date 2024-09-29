@@ -13,7 +13,7 @@
             margin: auto;
             padding: 2rem;
             font-family: Libre Baskerville, Georgia, serif;
-            overflow: hidden; /* Prevent body scrolling when popup is open */
+            overflow: auto; /* Allow body scrolling */
         }
         .dark-mode {
             background-color: black;
@@ -161,11 +161,17 @@
                 </div>
             `;
             document.body.appendChild(popupContainer);
+
+            // Prevent body from scrolling when popup is open
+            document.body.style.overflow = 'hidden';
         }
 
         function closePopup() {
             document.querySelector('.overlay').remove();
             document.querySelector('.popup-container').remove();
+
+            // Allow body to scroll again
+            document.body.style.overflow = 'auto';
         }
 
         function downloadResume() {
