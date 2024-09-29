@@ -15,7 +15,7 @@ layout: no-header
 ## EDUCATION AND BACKGROUND
 
 **Kamla Nehru Institute of Technology, Sultanpur, India**  
-Master of Computer Application (MCA) (CGPA: 8.75)
+Master of Computer Application (MCA), CGPA: 8.75
 
 ---
 
