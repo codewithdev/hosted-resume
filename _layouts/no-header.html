@@ -13,7 +13,7 @@
             margin: auto;
             padding: 2rem;
             font-family: Libre Baskerville, Georgia, serif;
-            transition: filter 0.3s ease; /* Transition for background blur */
+            overflow: hidden; /* Prevent body scrolling when popup is open */
         }
         .dark-mode {
             background-color: black;
@@ -60,6 +60,14 @@
         .popup {
             padding: 20px;
             text-align: center;
+            background: white; /* Make popup background white */
+            border-radius: 10px; /* Optional: Add border radius */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+        }
+        .popup h2 {
+            margin: 0; /* Remove default margin */
+            font-size: 24px; /* Title font size */
+            color: #333; /* Title color */
         }
         .popup button {
             margin: 10px;
@@ -73,9 +81,17 @@
         .popup button:hover {
             background-color: #0056b3;
         }
-        /* Blur background */
-        .blurred {
-            filter: blur(5px);
+        /* Overlay to close the popup */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Apply blur to the background */
+            z-index: 1000; /* Below the popup but above the content */
+            pointer-events: auto; /* Allow clicking on the overlay */
         }
         /* Floating popup */
         .popup-container {
@@ -85,17 +101,6 @@
             transform: translate(-50%, -50%);
             z-index: 1001; /* Higher than the blur */
             pointer-events: auto; /* Allow interaction with the popup */
-        }
-        /* Overlay to close the popup */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-            z-index: 1000; /* Below the popup but above the content */
-            pointer-events: auto; /* Allow clicking on the overlay */
         }
     </style>
 </head>
@@ -138,9 +143,6 @@
         }
 
         function showPopup() {
-            // Add blur class to body
-            document.body.classList.add('blurred');
-
             // Create overlay
             const overlay = document.createElement('div');
             overlay.className = 'overlay';
@@ -152,6 +154,7 @@
             popupContainer.className = 'popup-container';
             popupContainer.innerHTML = `
                 <div class="popup">
+                    <h2>A Friendly Professional 🤵‍♂️</h2>
                     <p>Would you like to:</p>
                     <button onclick="downloadResume()">Download Resume</button>
                     <button onclick="contactMe()">Contact Me</button>
@@ -161,13 +164,12 @@
         }
 
         function closePopup() {
-            document.body.classList.remove('blurred');
             document.querySelector('.overlay').remove();
             document.querySelector('.popup-container').remove();
         }
 
         function downloadResume() {
-            window.open('https://github.com/codewithdev/hosted-resume/blob/master/Dev_Prakash_Sharma.pdf', '_blank');
+            window.open('resume.pdf', '_blank'); // Adjust path as needed
         }
 
         function contactMe() {
