@@ -5,202 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         body {
             max-width: 800px;
             margin: auto;
             padding: 2rem;
             font-family: Libre Baskerville, Georgia, serif;
-            transition: background-color 0.3s, color 0.3s;
         }
         .dark-mode {
-            background-color: #121212;
-            color: #ffffff;
-        }
-        .switch-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            font-size: 1rem;
-        }
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-            margin-left: 10px;
-        }
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: 0.4s;
-            border-radius: 34px;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: 0.4s;
-            border-radius: 50%;
-        }
-        input:checked + .slider {
-            background-color: #007bff;
-        }
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        .buttons-container {
-            position: fixed;
-            top: 70px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            background-color: #007bff;
+            background-color: black;
             color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
         }
-        .button:hover {
-            background-color: #0056b3;
-        }
-        /* Popup styling */
-        .popup-overlay {
+        .theme-toggle {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 24px;
+        }
+        .sun-icon, .moon-icon {
             display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
         }
-        .popup-content {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+        .sun-icon.active {
+            display: inline;
         }
-        .popup-content h2 {
-            margin-top: 0;
-            font-size: 1.5rem;
-        }
-        .popup-button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 1rem;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .popup-button:hover {
-            background-color: #0056b3;
+        .moon-icon.active {
+            display: inline;
         }
     </style>
 </head>
 <body class="markdown-body">
-    {{ content }}
-
-    <!-- Dark Mode Toggle Button -->
-    <div class="switch-container">
-        <span id="theme-label">Dark Mode</span>
-        <label class="switch">
-            <input type="checkbox" id="theme-toggle">
-            <span class="slider"></span>
-        </label>
+    <div>
+        {{ content }}
     </div>
 
-    <!-- Additional Buttons: Download Resume and Contact -->
-    <div class="buttons-container">
-        <a href="Dev Prakash Sharma.pdf" download="Dev_Prakash_Sharma_Resume.pdf" class="button">Download Resume</a>
-        <a href="mailto:idevprakaash@gmail.com" class="button">Contact Me</a>
-    </div>
-
-    <!-- Popup for Resume or Contact -->
-    <div id="popup" class="popup-overlay">
-        <div class="popup-content">
-            <h2>What would you like to do?</h2>
-            <button class="popup-button" onclick="downloadResume()">Download Resume</button>
-            <button class="popup-button" onclick="contactMe()">Contact Me</button>
-        </div>
-    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <span class="sun-icon active">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
 
     <script>
-        // Apply saved theme preference on load
-        const savedTheme = localStorage.getItem('theme');
-        const body = document.body;
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeLabel = document.getElementById('theme-label');
+        // Function to toggle theme
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle("dark-mode");
 
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-            themeToggle.checked = true;
-            themeLabel.textContent = 'Dark Mode';
-        }
+            // Toggle icons
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            sunIcon.classList.toggle("active");
+            moonIcon.classList.toggle("active");
 
-        // Toggle theme and save preference
-        themeToggle.addEventListener('change', () => {
-            if (themeToggle.checked) {
-                body.classList.add('dark-mode');
-                themeLabel.textContent = 'Dark Mode';
+            // Save theme preference in localStorage
+            if (body.classList.contains("dark-mode")) {
                 localStorage.setItem('theme', 'dark');
             } else {
-                body.classList.remove('dark-mode');
-                themeLabel.textContent = 'Light Mode';
                 localStorage.setItem('theme', 'light');
             }
+        }
+
+        // Load saved theme preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add("dark-mode");
+                document.querySelector('.sun-icon').classList.remove("active");
+                document.querySelector('.moon-icon').classList.add("active");
+            }
         });
-
-        // Show popup after 1.5 minutes (90,000 ms)
-        setTimeout(() => {
-            document.getElementById('popup').style.display = 'flex';
-        }, 90000);
-
-        // Function to download resume
-        function downloadResume() {
-            window.location.href = "Dev_Prakash_Sharma.pdf";
-            closePopup();
-        }
-
-        // Function to contact via email
-        function contactMe() {
-            window.location.href = "mailto:idevprakaash@gmail.com";
-            closePopup();
-        }
-
-        // Function to close popup
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
     </script>
 </body>
 </html>
