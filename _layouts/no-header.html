@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         body {
             max-width: 800px;
@@ -69,6 +70,13 @@
                 themeToggleButton.textContent = 'Switch to Dark Theme';
                 setCookie('theme', 'light', 30); // Set cookie for 30 days
             }
+        });
+        // Function to download content as PDF
+        document.getElementById('download-pdf').addEventListener('click', () => {
+            const element = document.getElementById('content');
+            html2pdf()
+                .from(element)
+                .save('Dev_Prakash_Sharma_Resume.pdf');
         });
     </script>
 </body>
