@@ -1,6 +1,4 @@
----
-layout: plain
----
+
 
 # DEV PRAKASH SHARMA
 
