@@ -31,7 +31,7 @@
             transition: background-color 0.3s ease;
         }
         .toggle input {
-            display: none;
+            display: none; /* Hide checkbox */
         }
         .sun, .moon {
             width: 24px;
@@ -45,10 +45,10 @@
             background-color: rgb(251, 248, 248);
         }
         .toggle input:checked + .slider .sun {
-            opacity: 0;
+            opacity: 0; /* Hide sun icon when checked */
         }
         .toggle input:checked + .slider .moon {
-            opacity: 1;
+            opacity: 1; /* Show moon icon when checked */
         }
         .slider {
             display: flex;
@@ -84,6 +84,10 @@
             document.body.classList.toggle('dark-mode');
             const newTheme = this.checked ? 'dark' : 'light';
             localStorage.setItem('theme', newTheme);
+            
+            // Update opacity of icons based on theme
+            document.querySelector('.sun').style.opacity = this.checked ? '0' : '1';
+            document.querySelector('.moon').style.opacity = this.checked ? '1' : '0';
         });
 
         // Popup Logic
