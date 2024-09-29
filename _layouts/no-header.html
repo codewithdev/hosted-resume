@@ -110,16 +110,16 @@
 
         // Show popup after 1.5 minutes if not already shown
         if (!popupShown) {
-            setTimeout(showPopup, 90 * 1000); // 1.5 minutes
+            setTimeout(showPopup, 20000);
             localStorage.setItem(popupShownKey, 'true');
         }
 
         function showPopup() {
             const popup = new Popup({
-                title: 'Options',
+                title: 'A Friendly Professional 🤵‍♂️',
                 content: `
                     <div class="popup">
-                        <p>What would you like to do?</p>
+                        <p>Would you like to:</p>
                         <button onclick="downloadResume()">Download Resume</button>
                         <button onclick="contactMe()">Contact Me</button>
                     </div>
