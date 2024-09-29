@@ -63,7 +63,7 @@ Master of Computer Application (MCA), CGPA: 8.75
 ### Tutorials Point India Pvt Ltd - Technical Author
 **Jan 2021 - Oct 2022**  
 - Created full-fledged tutorials on various frameworks, libraries, programming languages, content, and Q&A based on Java frameworks, Python frameworks, GUI libraries, data science image libraries, Data Structures, and Algorithms in C++ and Python.
-- **Link**: [TutorialsPoint Contribution](https://www.tutorialspoint.com/answers/dev-prakash-sharma)
+- **Link**: [TutorialsPoint Contribution](https://www.tutorialspoint.com/authors/dev-prakash-sharma)
 
 ### Data Science and Machine Learning Intern – IIT Roorkee
 **May 2019 - July 2019**  
@@ -96,11 +96,11 @@ Master of Computer Application (MCA), CGPA: 8.75
 ## PROJECTS
 
 ### Route Planner using OpenStreetMap
-- **Link**:  https://github.com/codewithdev/Route-Planner-Open-Street-Map
+- **Link**: [Route Planner Open Street Map](https://github.com/codewithdev/Route-Planner-Open-Street-Map)
 - Implemented A* search Algorithm to find the path in a customized map using OpenStreetMap API. Algorithm built with C++ and packed using the CMake packager.
 
 ### Notes Separator
-- **Link**:  https://github.com/codewithdev/Notes-Separator
+- **Link**: [Notes Separator Project](https://github.com/codewithdev/Notes-Separator)
 - Developed a web application using ML algorithms and Python ML libraries that recognizes handwritten notes and separates them from general pictures in a gallery.
 - Implemented CNN classifier algorithm to classify the images based on pre-trained data assets.
 
