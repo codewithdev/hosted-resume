@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popup.js/1.0.0/popup.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         body {
             max-width: 800px;
@@ -18,132 +18,103 @@
             background-color: black;
             color: white;
         }
-        /* Switch button styles */
-        .switch {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+        .toggle {
+            cursor: pointer;
             display: flex;
             align-items: center;
-        }
-        .switch input {
-            display: none;
-        }
-        .switch-label {
-            width: 50px;
-            height: 25px;
-            background-color: grey;
+            border: 2px solid black;
             border-radius: 25px;
-            cursor: pointer;
-            position: relative;
-            transition: background-color 0.3s;
-        }
-        .switch-label:before {
-            content: '';
-            width: 25px;
-            height: 25px;
+            padding: 5px;
+            justify-content: space-between;
+            width: 70px;
             background-color: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: transform 0.3s;
+            transition: background-color 0.3s ease;
         }
-        input:checked + .switch-label {
-            background-color: yellow;
-        }
-        input:checked + .switch-label:before {
-            transform: translateX(25px);
-        }
-        /* Icons */
-        .icon {
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-        input:checked + .switch-label .moon {
+        .toggle input {
             display: none;
         }
-        input:not(:checked) + .switch-label .sun {
-            display: none;
+        .sun, .moon {
+            width: 24px;
+            height: 24px;
+            transition: opacity 0.3s ease;
+        }
+        .toggle:hover {
+            box-shadow: 0 0 10px white;
+        }
+        .toggle input:checked + .slider {
+            background-color: black;
+        }
+        .toggle input:checked + .slider .sun {
+            opacity: 0;
+        }
+        .toggle input:checked + .slider .moon {
+            opacity: 1;
+        }
+        .slider {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
         }
     </style>
 </head>
 <body class="markdown-body">
-    {{ content }}
-
-    <div class="switch">
-        <input type="checkbox" id="theme-toggle" />
-        <label class="switch-label" for="theme-toggle">
-            <svg class="icon moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <circle cx="12" cy="12" r="5" />
-            </svg>
-            <svg class="icon sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
+    <div>
+        {{ content }}
+    </div>
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <label class="toggle">
+            <input type="checkbox" id="theme-toggle">
+            <div class="slider">
+                <img src="https://img.icons8.com/material-outlined/24/000000/sun.png" class="sun" />
+                <img src="https://img.icons8.com/material-outlined/24/000000/moon-squared.png" class="moon" style="opacity: 0;" />
+            </div>
         </label>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggle = document.getElementById('theme-toggle');
-            const element = document.body;
+        const toggle = document.getElementById('theme-toggle');
 
-            // Check the current theme from localStorage
-            const currentTheme = localStorage.getItem('theme');
-            if (currentTheme === 'dark') {
-                element.classList.add('dark-mode');
-                toggle.checked = true;
-            }
+        // Check for saved user preference and set theme accordingly
+        const userPreference = localStorage.getItem('theme') || 'light';
+        document.body.classList.toggle('dark-mode', userPreference === 'dark');
+        toggle.checked = userPreference === 'dark';
 
-            toggle.addEventListener('change', function() {
-                element.classList.toggle('dark-mode');
-                // Update the theme in localStorage
-                if (element.classList.contains('dark-mode')) {
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    localStorage.setItem('theme', 'light');
-                }
-            });
-
-            // Show popup after few seconds 
-            setTimeout(() => {
-                // Create popup
-                const popup = new Popup({
-                    title: "Just a friendly Popup 🙋‍♂️",
-                    message: "Would you like to download my Resume or contact me?",
-                    buttons: [
-                        {
-                            text: "Download Resume",
-                            action: () => {
-                                window.location.href = "Dev_Prakash_Sharma.pdf"; 
-                                popup.close();
-                            }
-                        },
-                        {
-                            text: "Contact Me",
-                            action: () => {
-                                window.location.href = "mailto:idevprakaash@gmail.com"; 
-                                popup.close();
-                            }
-                        }
-                    ]
-                });
-                popup.show();
-            }, 45000); // 45seconds
+        toggle.addEventListener('change', function() {
+            document.body.classList.toggle('dark-mode');
+            const newTheme = this.checked ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
         });
+
+        // Popup Logic
+        const popupDelay = 90 * 1000; // 1.5 minutes in milliseconds
+        const popupDisplayedKey = 'popupDisplayed';
+
+        // Check if popup timing has already been set
+        if (!localStorage.getItem(popupDisplayedKey)) {
+            setTimeout(() => {
+                const popup = document.createElement('div');
+                popup.className = 'popup';
+                popup.innerHTML = `
+                    <div class="popup-content">
+                        <h2>Resume Options</h2>
+                        <p>Would you like to:</p>
+                        <button id="download-resume" class="popup-button">Download Resume</button>
+                        <button id="contact-me" class="popup-button">Contact Me</button>
+                    </div>
+                `;
+                document.body.appendChild(popup);
+                localStorage.setItem(popupDisplayedKey, true);
+
+                document.getElementById('download-resume').addEventListener('click', function() {
+                    window.location.href = 'Dev_Prakash_Sharma.pdf'; 
+                });
+
+                document.getElementById('contact-me').addEventListener('click', function() {
+                    window.location.href = 'mailto:idevprakaash@gmail.com';
+                });
+            }, popupDelay);
+        }
     </script>
 </body>
 </html>
