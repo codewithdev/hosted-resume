@@ -107,8 +107,8 @@ Master of Computer Application (MCA), CGPA: 8.75
 
 ## ACHIEVEMENTS AND AWARDS
 
-- Awarded 6 out of 120 other brightest engineers across the country (India) by Economic Times (Times Internet) Magazine, for showing leadership and enthusiasm in critical assessment.
-- Linux Foundation Attendee Scholarship Recipient (France & Europe) to attend the Open-Source Linux Conference and Summit 2019, 2020.
-- Awarded the Most Valuable Author Award 2021 by Tutorialspoint for publishing most of the articles and tutorials in a span of 8 months.
+- Recognized as one of 6 top brightest engineers out of 120 runner ups across the country by Economic Times (Times Internet) Magazine, for demonstrating skills as mission executer, leadership, team management, and critical assessment. 
+- Linux Foundation Attendee Scholarship Recipient (France and Europe) to attend the Global Open-Source Linux Conference and Summit in 2019, 2020.
+- Received the Most Valuable Author Award 2021 from Tutorialspoint for curating tutorials and publishing the highest number of articles in a span of 8 months. The articles and tutorials attracted more than +250k learners on Tutorialpoint worldwide. 
 - Runner Up, World Cube Championship, 2017 IIT Kanpur for solving cube in 27:13:00 seconds.
-- Recognized as the Documentation Champion in 2022 by Chargebee for spearheading the Chargebee Receivables documentation and delivering the outstanding documentation within a quarter. The documentation helped product teams launch their product in MVP.
+- Received Documentation Champion award in 2022 from Chargebee for showcasing documentation skills, spearheading the Chargebee Receivables documentation, and delivering the outstanding documentation within a quarter. The documentation helped product teams launch their product in MVP.
