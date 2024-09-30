@@ -19,26 +19,25 @@ Master of Computer Application (MCA), CGPA: 8.75
 
 ---
 
-## SKILLS
+## SKILLS AND EXPERTISE
 
-- **Language**: C++, Python, JavaScript, Java, Tcl/Tk, XML, HTML, CSS, Markdown, PHP
-- **Libraries/Frameworks**: Pandas, NumPy, Flask, Django, Tkinter, Kafka
-- **Developer Tools**: Git, Linux, Jekyll, JIRA, Confluence, Postman
-- **Platforms**: Google Cloud Platforms (GCP), Heroku
-- **Databases**: SQL, Cloud Databases
-- **Familiar**: Open API, Swagger, REST APIs, Technical Documentation
-- **Expertise**: API Testing, Authentication methods, versioning, multi-product documentation, centralization
+- **Languages**: C++, Python, JavaScript, Java, Tcl/Tk, XML, HTML, CSS, Markdown, PHP
+- **Libraries/Frameworks**: Pandas, NumPy, Flask, Django, Tkinter (Tcl/Tk), Jekyll, Sphinx, Diagram-as-code, Docusaurus, Kafka.
+- **Developer Frameworks/Tools**: Git, Linux, Jekyll, JIRA, Confluence, Postman, GitHub Actions (CI/CD), Jenkins
+- **Authoring & Publishing Tools**: Confluence, Markdown, GitHub Pages, GitBook, Jekyll, Sphinx, JavaDoc, TypeDoc, Docusaurus, Draw.io, Camtasia, SnagIt.
+- **Databases**: SQL, MongoDB, Firebase, and Prisma (serverless database).
+- **Expertise**: Open API, Swagger, REST APIs, SDK Documentation, API Testing (Postman), documentation versioning, multi-product documentation, System designing and architecture.
 
 ---
 
-## TECHNICAL EXPERIENCE
+## WORK EXPERIENCE
 
 ### The D.E. Shaw Group - Member, Technical Writing, Front Office Tech
 **Oct 2022 - Present**  
 - Primary writer and owner for creating full-fledged product and developer documentation, API documentation (Java and Python using docs-as-code approach) for proprietary trading tools, and many other projects from different teams.
 - Reviewed and published blog posts for tools, frameworks, and features from various tech and business teams.
-- Planned documentation, discussed architecture, and created content strategies to streamline the documentation flow of the firm's tools and frameworks developed across various engineering and leadership teams worldwide.
-- Helped other writers understand complex technical products, frameworks, and system integration architecture.
+- Planning documentation, discussing and creating intutive system and workflow architecture, and creating content strategies to streamline the documentation flow of firmwide productivity, trading tools, and frameworks developed across various engineering and leadership teams worldwide.
+- Helping other writers to understand various firmwide complex technical products, system architecture, frameworks, and system integrations.
 
 ### Chargebee - Senior Technical Writer
 **Sep 2021 - Oct 2022**  
@@ -106,7 +105,7 @@ Master of Computer Application (MCA), CGPA: 8.75
 
 ---
 
-## ACHIEVEMENTS
+## ACHIEVEMENTS AND AWARDS
 
 - Awarded 6 out of 120 other brightest engineers across the country (India) by Economic Times (Times Internet) Magazine, for showing leadership and enthusiasm in critical assessment.
 - Linux Foundation Attendee Scholarship Recipient (France & Europe) to attend the Open-Source Linux Conference and Summit 2019, 2020.
