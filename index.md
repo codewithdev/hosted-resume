@@ -25,7 +25,7 @@ Master of Computer Application (MCA), CGPA: 8.75
 - **Libraries/Frameworks**: Pandas, NumPy, Flask, Django, Tkinter (Tcl/Tk), Jekyll, Sphinx, Diagram-as-code, Docusaurus, Kafka.
 - **Developer Frameworks/Tools**: Git, Linux, Jekyll, JIRA, Confluence, Postman, GitHub Actions (CI/CD), Jenkins
 - **Authoring & Publishing Tools**: Confluence, Markdown, GitHub Pages, GitBook, Jekyll, Sphinx, JavaDoc, TypeDoc, Docusaurus, Draw.io, Camtasia, SnagIt.
-- **Databases**: SQL, MongoDB, Firebase, and Prisma (serverless database).
+- **Databases**: SQL, Firebase, and Prisma (serverless database).
 - **Expertise**: Open API, Swagger, REST APIs, SDK Documentation, API Testing (Postman), documentation versioning, multi-product documentation, System designing and architecture.
 
 ---
@@ -34,10 +34,16 @@ Master of Computer Application (MCA), CGPA: 8.75
 
 ### The D.E. Shaw Group - Member, Technical Writing, Front Office Tech
 **Oct 2022 - Present**  
-- Primary writer and owner for creating full-fledged product and developer documentation, API documentation (Java and Python using docs-as-code approach) for proprietary trading tools, and many other projects from different teams.
-- Reviewed and published blog posts for tools, frameworks, and features from various tech and business teams.
-- Planning documentation, discussing and creating intutive system and workflow architecture, and creating content strategies to streamline the documentation flow of firmwide productivity, trading tools, and frameworks developed across various engineering and leadership teams worldwide.
-- Helping other writers to understand various firmwide complex technical products, system architecture, frameworks, and system integrations.
+- Primary and dedicated tech writer for complex and core tech front office tech teams supporting in the development of algorithmic-based trading tools and data streaming technologies. I help teams to provide user-friendly and developer-friendly documentation, release notes, and monthly feature updates, announcement, and blog published firmwide.
+- Collaborated with mission critical, business-oriented tech and business teams to create content strategy, restructure the existing documentation, and update documentation as per the features.
+- Created proof of concept proposal for advancing the Javascript and Typescript based client library and API documentation using the flavours of Docusaurus and TypeDoc. 
+- Developed documentation process and examples tutorials to help developers and other teams to effectively use docs-as-code approach and publish Markdown pages using versioning and documentation pipeline via Jenkins and GitHub Action checks.
+- Author and review blogs for tools and framework from various tech, design, and business teams, ensuring the technical accuracies, blog format, and overall layout.
+- Developed release notes templates that enabled developers and stakeholders to easily navigate, view updates on tools and frameworks, and keep their applications up-to-date with latest updates.
+- Helped other writers to learn new technologies, internal tools, system architecture, and get their hands on tools that require primary testing before releasing the documentation.
+- Collaborate with developers to understand the internal architecture and workflow of the tools/framework and develop intuitive system and internal architecture and workflow diagram.
+- Interacted with teams to understand the use case, get their feedback on the tools/frameworks, and developed use case documentation.
+- Created executive level proposal and user documentation for productivity tools used by leaderships across the firm.
 
 ### Chargebee - Senior Technical Writer
 **Sep 2021 - Oct 2022**  
