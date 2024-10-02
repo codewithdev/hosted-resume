@@ -34,7 +34,7 @@ Master of Computer Application (MCA), CGPA: 8.75
 
 ### The D.E. Shaw Group - Member, Technical Writing, Front Office Tech
 **Oct 2022 - Present**  
-- Primary tech writer for front-office technology teams, specializing in the development of algorithmic based trading tools and data streaming technologies. I collaborate with teams to create user and developer friendly documentation, and feature updates blogs which are published across the firm.
+- Primary tech writer for research group and front-office technology teams specializing in the development of algorithmic based trading tools and data streaming technologies as wel. I collaborate with teams to create user and developer friendly documentation, and feature updates blogs which are published across the firm.
 - Collaborated with mission critical, business-oriented tech and business teams to create content strategy, restructure existing documentation, and update inline with new featuers.
 - Created proof of concept proposal for advancing the Javascript and Typescript based client library and API documentation using the flavours of Docusaurus and TypeDoc. 
 - Developed documentation process and examples tutorials to help developers and other teams to effectively use docs-as-code approach and publish Markdown pages using versioning and documentation pipeline via Jenkins and GitHub Action checks.
