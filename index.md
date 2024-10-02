@@ -21,12 +21,12 @@ Master of Computer Application (MCA), CGPA: 8.75
 
 ## SKILLS AND EXPERTISE
 
-- **Languages**: C++, Python, JavaScript, Java, Tcl/Tk, XML, HTML, CSS, Markdown, PHP
+- **Languages**: C++, Python, Java, HTML, CSS, PHP
 - **Libraries/Frameworks**: Pandas, NumPy, Flask, Django, Tkinter (Tcl/Tk), Jekyll, Sphinx, Diagram-as-code, Docusaurus, Kafka.
-- **Developer Frameworks/Tools**: Git, Linux, Jekyll, JIRA, Confluence, Postman, GitHub Actions (CI/CD), Jenkins
+- **Developer Frameworks/Tools**: Git, Jekyll, JIRA, Confluence, Postman, GitHub Actions (CI/CD), and Jenkins
 - **Authoring & Publishing Tools**: Confluence, Markdown, GitHub Pages, GitBook, Jekyll, Sphinx, JavaDoc, TypeDoc, Docusaurus, Draw.io, Camtasia, SnagIt.
 - **Databases**: SQL, Firebase, and Prisma (serverless database).
-- **Expertise**: Open API, Swagger, REST APIs, SDK Documentation, API Testing (Postman), documentation versioning, multi-product documentation, System designing and architecture.
+- **Expertise**: Swagger, REST APIs, SDK Documentation, Postman API testing and documentation, multi-product documentation and versioning.
 
 ---
 
