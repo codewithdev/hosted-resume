@@ -66,10 +66,24 @@ Master of Computer Application (MCA), CGPA: 8.75
 - Created full-fledged tutorials on various frameworks, libraries, programming languages, content, and Q&A based on Java frameworks, Python frameworks, GUI libraries, data science image libraries, Data Structures, and Algorithms in C++ and Python.
 - **Link**: [TutorialsPoint Contribution](https://www.tutorialspoint.com/authors/dev-prakash-sharma)
 
+### Hackerearth - Software Development Intern 
+**Oct 2020 - Dec 2020** 
+- Tested the Webpack for Hacker Earth’s standard user contribution panel module across multiple browsers using Selenium web testing framework. 
+- Developed automation scripts and maintained builds that executed over 231k+ user contribution entries.
+- Analyzed and debugged duplicated entries in the managed database.
+
+### Associate Software Developer
+**Jun 2020 - Aug 2020**
+- Responsible for creating dashboard for Ebook management for employees using various PHP alogorithms to process raw data, store data using MongoDB (PECL), and templating using Laravel.
+- Enhanced the Middleware to allow employees to perform real-time operations in Ebook management.
+- Applied agile methodology to track and evaluate ongoing project success metrics.
+
 ### Data Science and Machine Learning Intern – IIT Roorkee
 **May 2019 - July 2019**  
 - Worked on Pandas, NumPy, SciPy, and other Python Data Analysis tools and libraries.
 - Implemented Python ML-based algorithms to train models and predict images using OpenCV, SciPy, and Pandas.
+
+### Software Engineering Intern
 
 ---
 
@@ -82,10 +96,10 @@ Master of Computer Application (MCA), CGPA: 8.75
 - Mentored students worldwide through communities virtually and helped them get hands-on experience with GitHub and its products.
 - **Profile**: [GitHub Campus Expert Profile](https://githubcampus.expert/codewithdev/)
 
-### Microsoft Student Partner - Microsoft
+### Microsoft Student Partners - Microsoft
 **Nov 2019 - Dec 2021**  
 - Led global tech communities, hosted hackathons, workshops, and webinars based on various open-source and web technologies.
-- Mentored more than 500+ students across colleges in India and taught about developing with open-source technologies.
+- Mentored more than 500+ students across colleges in India and assisted in developing with open-source technologies.
 
 ### Google Code-in Mentor - Tensorflow
 **Nov 2020 - Jan 2021**  
@@ -109,7 +123,7 @@ Master of Computer Application (MCA), CGPA: 8.75
 
 ## ACHIEVEMENTS AND AWARDS
 
-- Recognized as one of 6 top brightest engineers out of 120 runner ups across the country by Economic Times (Times Internet) Magazine, for demonstrating skills as mission executer, leadership, team management, and critical assessment. 
+- Finalist of "Economic Times Campus Star-3.0" and recognized as one of 6 top brightest engineers out of 120 runner-ups across the country by Economic Times (Times Internet) Magazine, for demonstrating skills leadership, team management, and critical assessment. 
 - Linux Foundation Attendee Scholarship Recipient (France and Europe) to attend the Global Open-Source Linux Conference and Summit in 2019, 2020.
 - Received the Most Valuable Author Award 2021 from Tutorialspoint for curating tutorials and publishing the highest number of articles in a span of 8 months. The articles and tutorials attracted more than +250k learners on Tutorialpoint worldwide. 
 - Runner Up, World Cube Championship, 2017 IIT Kanpur for solving cube in 27:13:00 seconds.
