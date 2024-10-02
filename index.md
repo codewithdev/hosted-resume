@@ -83,8 +83,6 @@ Master of Computer Application (MCA), CGPA: 8.75
 - Worked on Pandas, NumPy, SciPy, and other Python Data Analysis tools and libraries.
 - Implemented Python ML-based algorithms to train models and predict images using OpenCV, SciPy, and Pandas.
 
-### Software Engineering Intern
-
 ---
 
 ## VOLUNTEERING EXPERIENCE
