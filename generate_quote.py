@@ -29,7 +29,7 @@ with open("README.md", "r") as file:
 
 with open("README.md", "w") as file:
     for line in lines:
-        if line.strip() == "<!--QUOTE-->":
-            file.write(f"> {quote}\n\n")
+        if "<!--QUOTE-->" in line:
+            file.write(f"> {quote}\n")
         else:
             file.write(line)
