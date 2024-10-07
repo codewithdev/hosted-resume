@@ -7,18 +7,112 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popup.js/1.0.0/popup.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
             max-width: 800px;
             margin: auto;
             padding: 2rem;
             font-family: Libre Baskerville, Georgia, serif;
-            overflow: auto;
+            overflow: auto; /* Allow body scrolling */
         }
         .dark-mode {
-            background-color: #121212;
-            color: #ffffff;
+            background-color: black;
+            color: white;
+        }
+        .toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border: 2px solid black; /* border for toggle */
+            border-radius: 25px;
+            padding: 5px;
+            justify-content: space-between;
+            width: 70px;
+            background-color: white;
+            transition: background-color 0.3s ease;
+        }
+        .toggle input {
+            display: none;
+        }
+        .sun, .moon {
+            width: 24px;
+            height: 24px;
+            transition: opacity 0.3s ease;
+        }
+        .toggle:hover {
+            box-shadow: 0 0 10px white; /* Hover effect with white glow */
+        }
+        .toggle input:checked + .slider {
+            background-color: rgb(251, 248, 248);
+        }
+        .toggle input:checked + .slider .sun {
+            opacity: 0;
+        }
+        .toggle input:checked + .slider .moon {
+            opacity: 1;
+        }
+        .slider {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .popup {
+            padding: 20px;
+            text-align: center;
+            background: white; /* Make popup background white */
+            border-radius: 10px; /* Optional: Add border radius */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+        }
+        .popup h2 {
+            margin: 0; /* Remove default margin */
+            font-size: 24px; /* Title font size */
+            color: #333; /* Title color */
+        }
+        .popup button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+        /* Overlay to close the popup */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Apply blur to the background */
+            z-index: 1000; /* Below the popup but above the content */
+            pointer-events: auto; /* Allow clicking on the overlay */
+        }
+        /* Floating popup */
+        .popup-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1001; /* Higher than the blur */
+            pointer-events: auto; /* Allow interaction with the popup */
+        }
+        /* Ensure bullet points are visible */
+        ul, ol {
+            list-style-type: disc; /* Ensure default list style for ul */
+            margin-left: 20px; /* Add left margin for better visibility */
+            padding-left: 20px; /* Add padding for better indentation */
+        }
+        ol {
+            list-style-type: decimal; /* Ensure default list style for ol */
+        }
+        li {
+            margin-bottom: 10px; /* Add space between list items */
         }
     </style>
 </head>
@@ -26,14 +120,14 @@
     <div>
         {{ content }}
     </div>
-
-    <!-- Dark/Light Mode Toggle -->
-    <div id="theme-toggle-container" style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
-        <button id="theme-toggle" class="p-2 rounded-full bg-white border-2 border-black dark:bg-black dark:border-white">
-            <span id="theme-icon" class="text-yellow-500">
-                ☀️
-            </span>
-        </button>
+    <div style="position: fixed; top: 10px; right: 10px; z-index: 1002;">
+        <label class="toggle">
+            <input type="checkbox" id="theme-toggle">
+            <div class="slider">
+                <img src="https://img.icons8.com/material-outlined/24/000000/sun.png" class="sun" />
+                <img src="https://img.icons8.com/material-outlined/24/000000/moon.png" class="moon" style="opacity: 0;" />
+            </div>
+        </label>
     </div>
 
     <script>
@@ -63,6 +157,63 @@
                 }
             });
         });
+
+        // Popup
+        const popupShownKey = 'popupShown';
+        const popupShown = localStorage.getItem(popupShownKey);
+
+        // Show popup after 20 seconds if not already shown
+        if (!popupShown) {
+            setTimeout(showPopup, 20000);
+            localStorage.setItem(popupShownKey, 'true');
+        }
+
+        function showPopup() {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            overlay.onclick = closePopup; // Close popup when overlay is clicked
+            document.body.appendChild(overlay);
+
+            // Create popup container
+            const popupContainer = document.createElement('div');
+            popupContainer.className = 'popup-container';
+            popupContainer.innerHTML = `
+                <div class="popup">
+                    <h2>A Friendly Professional 🤵‍♂️</h2>
+                    <p>Would you like to:</p>
+                    <button onclick="downloadResume()">Download Resume</button>
+                    <button onclick="contactMe()">Contact Me</button>
+                </div>
+            `;
+            document.body.appendChild(popupContainer);
+
+            // Prevent body from scrolling when popup is open
+            document.body.style.overflow = 'hidden';
+            console.log('Popup shown'); // Debug log
+        }
+
+        function closePopup() {
+            const overlay = document.querySelector('.overlay');
+            const popupContainer = document.querySelector('.popup-container');
+            if (overlay) overlay.remove();
+            if (popupContainer) popupContainer.remove();
+
+            // Allow body to scroll again
+            document.body.style.overflow = 'auto';
+            console.log('Popup closed'); // Debug log
+        }
+
+        function downloadResume() {
+            window.open('resume.pdf', '_blank'); // Adjust path as needed
+        }
+
+        function contactMe() {
+            window.open('mailto:idevprakaash@example.com');
+        }
+
+        // Ensure showPopup is called after 20 seconds
+        setTimeout(showPopup, 20000);
     </script>
 </body>
 </html>
