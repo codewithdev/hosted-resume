@@ -15,10 +15,7 @@
             padding: 2rem;
             font-family: Libre Baskerville, Georgia, serif;
             overflow: auto; /* Allow body scrolling */
-        }
-        .dark-mode {
-            background-color: black;
-            color: white;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
         }
         .popup {
             padding: 20px;
@@ -85,19 +82,25 @@
     </div>
     <div style="position: fixed; top: 10px; right: 10px; z-index: 1002;">
         <button id="theme-toggle" class="px-4 py-2 bg-gray-200 text-black rounded-lg shadow-md hover:bg-gray-300 transition duration-300">
-            Toggle Dark Mode
+            <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.66 4.34l-.707-.707M6.34 6.34l-.707-.707m12.02 12.02l-.707-.707M6.34 17.66l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+            </svg>
         </button>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
             const body = document.body;
 
             // Load initial theme from localStorage
             if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 body.classList.add('bg-black', 'text-white');
                 themeToggle.classList.add('bg-gray-800', 'text-white', 'hover:bg-gray-700', 'hover:text-gray-200');
+                themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.66 4.34l-.707-.707M6.34 6.34l-.707-.707m12.02 12.02l-.707-.707M6.34 17.66l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />';
+            } else {
+                themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.66 4.34l-.707-.707M6.34 6.34l-.707-.707m12.02 12.02l-.707-.707M6.34 17.66l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />';
             }
 
             // Toggle theme on button click
@@ -112,8 +115,10 @@
                 // Save theme preference to localStorage
                 if (body.classList.contains('bg-black')) {
                     localStorage.setItem('theme', 'dark');
+                    themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.66 4.34l-.707-.707M6.34 6.34l-.707-.707m12.02 12.02l-.707-.707M6.34 17.66l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />';
                 } else {
                     localStorage.setItem('theme', 'light');
+                    themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12H3m15.66 4.34l-.707-.707M6.34 6.34l-.707-.707m12.02 12.02l-.707-.707M6.34 17.66l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />';
                 }
             });
         });
