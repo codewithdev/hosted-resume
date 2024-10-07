@@ -54,7 +54,7 @@ Master of Computer Application (MCA), CGPA: 8.75
 - Proposed Postman-based solution for publishing and testing internal developer APIs and recipes for engineering teams and product testing teams.
 - Worked closely with CTO, CEO, and Co-founder (design team) to create in-depth developer guides, user guides, use case documentation, and future roadmap for documentation efforts.
 
-### GitHub - GitHub Docs (Technical Writer Intern)
+### GitHub (GitHub Docs) - Technical Writer Intern
 **May 2021 - Oct 2021**  
 - Worked with GitHub Docs Product and Writer team to conceptualize, plan, and create content strategy for various GitHub products ([docs.github.com](https://docs.github.com/)).
 - Followed the existing documentation pipeline (docs-as-code) approach for creating markdown-based documentation, leveraging reusables for cross-referencing, and maintaining content consistency.
@@ -72,7 +72,7 @@ Master of Computer Application (MCA), CGPA: 8.75
 - Developed automation scripts and maintained builds that executed over 231k+ user contribution entries.
 - Analyzed and debugged duplicated entries in the managed database.
 
-### Associate Software Developer
+### ColoredCow India Pvt Ltd - Associate Software Developer
 **Jun 2020 - Aug 2020**
 - Responsible for creating dashboard for Ebook management for employees using various PHP alogorithms to process raw data, store data using MongoDB (PECL), and templating using Laravel.
 - Enhanced the Middleware to allow employees to perform real-time operations in Ebook management.
