@@ -104,6 +104,16 @@ else if (isLightOrAuto && !html.classList.contains('light')) html.classList.add(
             width: 24px;
             height: 24px;
         }
+        @keyframes colorChange {
+            0% { background-color: #1a1a2e; }
+            25% { background-color: #16213e; }
+            50% { background-color: #0f3460; }
+            75% { background-color: #1a1a40; }
+            100% { background-color: #1a1a2e; }
+        }
+        .dark {
+            animation: colorChange 20s infinite;
+        }
     </style>
 </head>
 <body class="markdown-body">
