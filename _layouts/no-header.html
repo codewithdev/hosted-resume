@@ -10,14 +10,14 @@
     
     <script>
     const html = document.querySelector('html');
-const isLightOrAuto = localStorage.getItem('hs_theme') === 'light' || (localStorage.getItem('hs_theme') === 'auto' && !window.matchMedia('(prefers-color-scheme: dark)').matches);
-const isDarkOrAuto = localStorage.getItem('hs_theme') === 'dark' || (localStorage.getItem('hs_theme') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isLightOrAuto = localStorage.getItem('hs_theme') === 'light' || (localStorage.getItem('hs_theme') === 'auto' && !window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isDarkOrAuto = localStorage.getItem('hs_theme') === 'dark' || (localStorage.getItem('hs_theme') === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-if (isLightOrAuto && html.classList.contains('dark')) html.classList.remove('dark');
-else if (isDarkOrAuto && html.classList.contains('light')) html.classList.remove('light');
-else if (isDarkOrAuto && !html.classList.contains('dark')) html.classList.add('dark');
-else if (isLightOrAuto && !html.classList.contains('light')) html.classList.add('light');
-</script>   
+    if (isLightOrAuto && html.classList.contains('dark')) html.classList.remove('dark');
+    else if (isDarkOrAuto && html.classList.contains('light')) html.classList.remove('light');
+    else if (isDarkOrAuto && !html.classList.contains('dark')) html.classList.add('dark');
+    else if (isLightOrAuto && !html.classList.contains('light')) html.classList.add('light');
+    </script>   
     
     <style>
         body {
@@ -111,8 +111,20 @@ else if (isLightOrAuto && !html.classList.contains('light')) html.classList.add(
             75% { background-color: #1a1a40; }
             100% { background-color: #1a1a2e; }
         }
-        .dark {
-            animation: colorChange 20s infinite;
+        html.dark {
+            background-color: #1a1a2e;
+            color: #ffffff;
+        }
+        html.dark body {
+            background-color: inherit;
+            color: inherit;
+        }
+        html.dark .popup {
+            background-color: #2a2a3e;
+            color: #ffffff;
+        }
+        html.dark .popup h2 {
+            color: #ffffff;
         }
     </style>
 </head>
